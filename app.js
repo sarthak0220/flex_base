@@ -4,6 +4,8 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+console.log("DEBUG MONGO_URI:", process.env.MONGO_URI);
+console.log("DEBUG JWT_SECRET:", process.env.JWT_SECRET);
 
 const app = express();
 
@@ -33,7 +35,7 @@ app.use(async (req, res, next) => {
 });
 
 // ✅ MongoDB connection
-const uri = process.env.MONGO_URI;
+
 
 if (!process.env.MONGO_URI) {
   console.error("❌ MONGO_URI is not defined. Check your .env file or Render env vars.");
