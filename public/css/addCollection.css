@@ -1,0 +1,294 @@
+/* General Body and Container Styling */
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #f0f2f5;
+    color: #4b5563;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.add-shoe-wizard {
+    background-color: #ffffff;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+/* Headings and Labels */
+h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #111827;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 1rem;
+}
+
+/* Wizard Step Styling */
+.wizard-step {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 20px;
+    margin-top: 5px;
+    border: 2px dashed #d1d5db;
+    border-radius: 0.75rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    text-align: center;
+}
+
+input[type="file"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+/* Image Preview */
+.image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-preview-item {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.image-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img-remove-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    line-height: 1;
+    padding: 0;
+}
+
+.img-remove-btn:hover {
+    background-color: #000000;
+    transform: scale(1.1);
+}
+
+/* Updated Button Styling - Sharp, modern, no border radius */
+button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 0; /* Removed border radius for sharp look */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 10px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Button Container with spacing */
+.button-container {
+    margin-top: 2.5rem; /* Added space above buttons */
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+}
+
+.btn-next,
+.btn-success,.btn-prev,.btn-primary,.owner-block button {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    color: black;
+    padding: 7px 12px;
+    font-size: 14px;
+    font-weight: 800;
+    margin-top: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.btn-next:hover,
+.btn-success:hover,.btn-prev:hover,.btn-primary:hover,.owner-block button:hover {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #111827;
+    transform: translateY(-1px);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* .btn-prev {
+    background-color: #f3f4f6;
+    color: #0a3f93;
+    border: 2px solid #d1d5db;
+}
+
+.btn-prev:hover {
+    background-color: #e5e7eb;
+    border-color: #9ca3af;
+    transform: translateY(-1px);
+} */
+
+/* .btn-primary {
+    background-color: #3b82f6;
+    color: white;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+} */
+
+/* Add More Button - only shows when images exist */
+#addMoreBtn {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    color: black;
+    padding: 7px 12px;
+    font-size: 14px;
+    margin-top: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+#addMoreBtn:hover {
+    background-color: #000000;
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Owner Container */
+#owners-container {
+    margin-top: 15px;
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.owner-block {
+    background-color: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 1rem;
+    align-items: end;
+}
+
+.owner-block input {
+    margin-top: 0;
+}
+
+/* .owner-block button {
+    background-color: #ef4444;
+    color: white;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+} */
+
+/* .owner-block button:hover {
+    background-color: #dc2626;
+} */
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+    z-index: 1000;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+}
