@@ -35,12 +35,12 @@ app.use(async (req, res, next) => {
 // ✅ MongoDB connection
 const uri = process.env.MONGO_URI;
 
-if (!uri) {
+if (process.env.MONGO_URI) {
   console.error("❌ MONGO_URI is not defined. Check your .env file or Render env vars.");
   process.exit(1);
 }
 
-mongoose.connect(uri)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ Connected to MongoDB');
 
