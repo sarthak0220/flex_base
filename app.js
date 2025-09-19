@@ -32,25 +32,35 @@ app.use(async (req, res, next) => {
   next();
 });
 
-// DB
-mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/flexbase', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('Error connecting to MongoDB:', err));
+// ✅ MongoDB connection
+const uri = process.env.MONGO_URI;
 
+if (!uri) {
+  console.error("❌ MONGO_URI is not defined. Check your .env file or Render env vars.");
+  process.exit(1);
+}
 
+mongoose.connect(uri)
+  .then(() => {
+    console.log('✅ Connected to MongoDB');
+
+    // Start server ONLY after DB connection
+    const PORT = process.env.PORT || 4000;
+    app.listen(PORT, () => {
+      console.log(`🚀 FlexBase server running on http://localhost:${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('❌ Error connecting to MongoDB:', err);
+    process.exit(1);
+  });
+
+// Views & static
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Only one route file to handle everything
+// Routes
 const indexRoutes = require('./routes/index');
 app.use('/', indexRoutes);
-
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`FlexBase server running on http://localhost:${PORT}`);
-});
